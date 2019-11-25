@@ -22,10 +22,8 @@ def merge(array1: List[int], array2: List[int]) -> List[int]:
             break
         if array1[array1index] < array2[array2index]:
             result.append(array1[array1index])
-            print(result)
             array1index += 1
         else:
             result.append(array2[array2index])
-            print(result)
             array2index += 1
     return result
