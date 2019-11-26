@@ -7,12 +7,23 @@ from typing import List
 
 def merge(lst1: List[int], lst2: List[int]) -> List[int]:
     """Func sorted"""
-    new_lst = lst1 + lst2
-    len_lst = len(new_lst)
-    for i in range(len_lst):
-        lowest_index = i
-        for j in range(i+1, len(new_lst)):
-            if new_lst[j] < new_lst[lowest_index]:
-                lowest_index = j
-        new_lst[i], new_lst[lowest_index] = new_lst[lowest_index], new_lst[i]
+
+    len_lst1 = len(lst1)
+    len_lst2 = len(lst2)
+
+    indx_lst1 = indx_lst2 = 0
+
+    new_lst = []
+
+    while indx_lst1 < len_lst1 and indx_lst2 < len_lst2:
+        if lst1[indx_lst1] <= lst2[indx_lst2]:
+            new_lst.append(lst1[indx_lst1])
+            indx_lst1 += 1
+        else:
+            new_lst.append((lst2[indx_lst2]))
+            indx_lst2 += 1
+    if indx_lst1 < len_lst1:
+        new_lst += lst1[indx_lst1:]
+    if indx_lst2 < len_lst2:
+        new_lst += lst2[indx_lst2:]
     return new_lst
