@@ -1,13 +1,18 @@
-"""Classic bubble sorting #2"""
+"""Make a new sorted list combining two sorted lists"""
 from typing import List
 
 
 def merge(arr1: List[int], arr2: List[int]) -> List[int]:
     """General func"""
     new_arr = arr1 + arr2
-    arr_length = len(new_arr) - 1
-    for i in range(arr_length):
-        for j in range(arr_length - i):
-            if new_arr[j] > new_arr[j + 1]:
-                new_arr[j], new_arr[j + 1] = new_arr[j + 1], new_arr[j]
-    return new_arr
+    return quick_sort(new_arr)
+
+
+def quick_sort(arr):
+    """Quick sorting function"""
+    if len(arr) < 2:
+        return arr
+    support = arr[0]
+    less = [i for i in arr[1:] if i <= support]
+    greater = [i for i in arr[1:] if i > support]
+    return quick_sort(less) + [support] + quick_sort(greater)
