@@ -1,19 +1,29 @@
 """
 docstring
 """
-from typing import List
 
 
-def merge(list_one: List[int], list_two: List[int]) -> List[int]:
+def merge_(list_one, list_two):
     """
 
     :param list_one:
     :param list_two:
     :return:
     """
-    merged_list = list_one + list_two
-    for i in range((len(merged_list))):
-        for j in range(1, len(merged_list) - i):
-            if merged_list[j - 1] > merged_list[j]:
-                merged_list[j - 1], merged_list[j] = merged_list[j], merged_list[j - 1]
-    return merged_list
+    index_left = index_right = 0
+    full_merged_list = []
+    full_len = len(list_one) + len(list_two)
+    while len(full_merged_list) < full_len:
+        if list_one[index_left] <= list_two[index_right]:
+            full_merged_list.append(list_one[index_left])
+            index_left += 1
+        else:
+            full_merged_list.append(list_two[index_right])
+            index_right += 1
+        if index_right == len(list_two):
+            full_merged_list += list_one[index_left:]
+            break
+        elif index_left == len(list_one):
+            full_merged_list += list_two[index_right:]
+            break
+    return full_merged_list

@@ -16,6 +16,6 @@ def test_merge(x):
     :return:
     """
     for i in range(10):
-        l1 = sorted(random.randint(1, 10) for _ in range(random.randint(1, 10)))
-        l2 = sorted(random.randint(1, 10) for _ in range(random.randint(1, 10)))
-        assert merge.merge(l1, l2) == sorted(l1 + l2)
+        list_one = sorted(random.randint(1, 10) for _ in range(random.randint(1, 10)))
+        list_two = sorted(random.randint(1, 10) for _ in range(random.randint(1, 10)))
+        assert merge.merge_(list_one, list_two) == sorted(list_one + list_two)
